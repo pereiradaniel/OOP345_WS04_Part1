@@ -3,7 +3,7 @@
 
 namespace sdds {
 	/* A constructor that receives the reservation as a string; this constructor is responsible for extracting information about the reservation from the stringand storing the tokens in the instance's attributes. */
-	Reservation::Reservation(const std::string& res) {
+	sdds::Reservation::Reservation(const std::string& res) {
 		// Temporary strings to hold info:
 		string _id, _name, _email, _people, _day, _hour;
 		
@@ -48,5 +48,35 @@ namespace sdds {
 		res_people = stoi(_people);	// stoi!!
 		res_day = stoi(_day);
 		res_hour = stoi(_hour);
+	}
+
+	// Insert the contents of a reservation object into an `ostream` object:
+	ostream& operator<<(ostream& os, Reservation& src) {
+		os << "Reservation " << src.res_id << ": ";
+		os << right << setw(10) << src.res_name;
+		
+		os << string(2, ' ') << left << setw(20) << "<" + src.res_email + ">";
+		os << string(4, ' ');
+
+		if (src.res_hour >= 6 && src.res_hour <= 9) {
+			// 6am-9am breakfast
+			os << "Breakfast";
+		}
+		else if (src.res_hour >= 11 && src.res_hour <= 15) {
+			// 11am-3pm lunch
+			os << "Lunch";
+		}
+		else if (src.res_hour >= 17 && src.res_hour <= 21) {
+			// 5pm-9pm dinner
+			os << "Dinner";
+		}
+		else {
+			// If kitchen is closed, drinks
+			os << "Drinks";
+		}
+
+		os << " on " << "day " << src.res_day << " @ " << src.res_hour << ":00" << " for " << src.res_people << " people." << endl;
+
+		return os;
 	}
 }
