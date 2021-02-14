@@ -1,9 +1,12 @@
+#include <iostream>
 #include <iomanip>
 #include "Reservation.h"
 
+using namespace std;
+
 namespace sdds {
 	/* A constructor that receives the reservation as a string; this constructor is responsible for extracting information about the reservation from the stringand storing the tokens in the instance's attributes. */
-	sdds::Reservation::Reservation(const std::string& res) {
+	Reservation::Reservation(const string& res) {
 		// Temporary strings to hold info:
 		string _id, _name, _email, _people, _day, _hour;
 		
@@ -51,7 +54,7 @@ namespace sdds {
 	}
 
 	// Insert the contents of a reservation object into an `ostream` object:
-	ostream &operator<<(ostream &os, const sdds::Reservation &src) {
+	ostream &operator<<(ostream &os, const Reservation &src) {
 		os << "Reservation " << right << setw(10) << src.res_id << ": ";
 		os << setw(20) << src.res_name;
 		
@@ -75,7 +78,7 @@ namespace sdds {
 			os << "Drinks";
 		}
 
-		os << " on " << "day " << src.res_day << " @ " << src.res_hour << ":00" << " for " << src.res_people << " people." << endl;
+		os << " on " << "day " << src.res_day << " @ " << src.res_hour << ":00" << " for " << src.res_people << ( src.res_people <= 1 ? " person" : " people") << endl;
 
 		return os;
 	}
