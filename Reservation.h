@@ -17,6 +17,7 @@ namespace sdds {
 	public:
 		Reservation() = default; // a default constructor
 		Reservation(const std::string& res); // Constructor that receives the reservation as a string.
+		friend ostream &operator<<(ostream& os, Reservation& src); // overload the insertion operator to insert the contents of a reservation object into an `ostream` object
 	};
 }
 
