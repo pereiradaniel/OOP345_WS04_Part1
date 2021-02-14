@@ -9,7 +9,7 @@ namespace sdds {
 	Reservation::Reservation(const string& res) {
 		// Temporary strings to hold info:
 		string _id, _name, _email, _people, _day, _hour;
-		
+
 		// Store reservation as string:
 		string _res = res;
 
@@ -54,10 +54,10 @@ namespace sdds {
 	}
 
 	// Insert the contents of a reservation object into an `ostream` object:
-	ostream &operator<<(ostream &os, const Reservation &src) {
+	ostream& operator<<(ostream& os, const Reservation& src) {
 		os << "Reservation " << right << setw(10) << src.res_id << ": ";
 		os << setw(20) << src.res_name;
-		
+
 		os << string(2, ' ') << left << setw(20) << "<" + src.res_email + ">";
 		os << string(4, ' ');
 
@@ -78,7 +78,7 @@ namespace sdds {
 			os << "Drinks";
 		}
 
-		os << " on " << "day " << src.res_day << " @ " << src.res_hour << ":00" << " for " << src.res_people << ( src.res_people <= 1 ? " person" : " people") << endl;
+		os << " on " << "day " << src.res_day << " @ " << src.res_hour << ":00" << " for " << src.res_people << (src.res_people <= 1 ? " person" : " people") << "." << endl;
 
 		return os;
 	}
