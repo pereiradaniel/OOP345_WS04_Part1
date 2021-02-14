@@ -38,8 +38,8 @@ namespace sdds {
 		_name.erase(0, _name.find_first_not_of(' '));
 		_name.erase(_name.find_last_not_of(' ') + 1);
 		// EMAIL
-		_email.erase(0, _name.find_first_not_of(' '));
-		_email.erase(_name.find_last_not_of(' ') + 1);
+		_email.erase(0, _email.find_first_not_of(' '));
+		_email.erase(_email.find_last_not_of(' ') + 1);
 
 		// Assign info to fields.
 		res_id = _id;
@@ -51,9 +51,9 @@ namespace sdds {
 	}
 
 	// Insert the contents of a reservation object into an `ostream` object:
-	ostream& operator<<(ostream& os, Reservation& src) {
-		os << "Reservation " << src.res_id << ": ";
-		os << right << setw(10) << src.res_name;
+	ostream &operator<<(ostream &os, const sdds::Reservation &src) {
+		os << "Reservation " << right << setw(10) << src.res_id << ": ";
+		os << setw(20) << src.res_name;
 		
 		os << string(2, ' ') << left << setw(20) << "<" + src.res_email + ">";
 		os << string(4, ' ');
